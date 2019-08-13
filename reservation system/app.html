@@ -1,0 +1,120 @@
+$(document).ready(function () {
+    // $('.google-signin').click(function(){
+    //     var provider = new firebase.auth.GoogleAuthProvider();
+    //     firebase.auth().signInWithPopup(provider)
+    //     .then(result => {
+    //         document.write(`Hello ${result.user.displayName}`);
+    //     })
+    //     .catch(err =>{
+    //         console.log(err);
+    //     })
+    // })
+
+    const db = firebase.firestore();
+    var from;
+    var to;
+
+    //selecting  the value from FROM
+    $(".pickup").change(function () {
+        from = $('.pickup option:selected').text().toLowerCase();
+        console.log(from);
+    });
+
+    //selecting  the value from TO
+    $(".destination").change(function () {
+        to = $('.destination option:selected').text().toLowerCase();
+        console.log(to);
+    });
+
+
+    $('#book_button').on('click', function () {
+        var tra;
+        var trains2;
+        console.log(from);
+        const chats = db.collection('cities').doc(from);
+        const trains_arr = chats.get()
+            .then(doc => {
+                tra = doc.data().trains
+                console.log(tra)
+                for (var i = 0; i < tra.length; i++) {
+                    const train_data = db.collection('trains').doc(tra[i]);
+                    const bhod = train_data.get()
+                        .then(doc => {
+                            var check = doc.data().destination
+                            if (check == to){
+                                trains2 = doc.id
+                                $('#table').find('tr:not(:first)').remove();
+                                $('#table').append(" <tr class='info' ><td>"+ trains2 +"</td><td>"+ doc.data().name +"</td><td>"+ doc.data().availableSeats+"</td><td>"+ doc.data().totalSeats +"</td><td><button >Book Now</button></td></tr>");
+                            };
+                            //console.log(doc.data());
+                        }).catch(err => { console.log(err) })
+                }
+            })
+            .catch(err => {
+                console.log('Error getting document', err);
+            });    
+    })
+
+    // chats.get()
+    // .then(doc => {
+    //     var ticket = $('.train');
+    // var arr = db.collection('cities').doc(from)
+    // })
+    // .catch(err => {
+    //     console.log(err);
+    // })
+
+
+
+
+
+    // const db = firebase.firestore();
+    // const chats = db.collection('chats');
+    // chats.get()
+    //     .then(doc => {
+    //         doc.forEach(element => {
+    //             let a = element.data();
+    //             console.log(a);
+    //         });
+    //     })
+    //     .catch(err => {
+    //         console.log(err);
+    //     })
+
+    // const db = firebase.firestore();
+    // const chats = db.collection('chats').where('age','>',18);
+    // chats.get()
+    //     .then(doc => {
+    //         doc.forEach(element => {
+    //             let a = element.data();
+    //             console.log(a);
+    //         });
+    //     })
+    //     .catch(err => {
+    //         console.log(err);
+    //     })
+
+    // const db = firebase.firestore();
+    // db.collection('chats').doc('user-1').onSnapshot(
+    //     doc => {
+    //         console.log(doc.data());
+    //     }
+    // );
+
+    // const db = firebase.firestore();
+    // db.collection('chats').onSnapshot(
+    //     doc => {
+    //         doc.forEach(element => {
+    //             console.log(element.data());
+    //         })
+    //     }
+    // );
+
+    // const db = firebase.firestore();
+    // db.collection('chats').doc('user-1').update({
+    //     name: 'Jone',
+    //     age: 52
+    // })
+
+
+})

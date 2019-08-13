@@ -1,0 +1,142 @@
+<html>
+    <head>
+        <style>
+            #table{
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%
+            }
+            #table td, #table th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+            #table th { 
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #6499ff;
+                color: white;
+            }
+
+            .popup-overlay{
+                /*Hides pop-up when there is no "active" class*/
+                visibility:hidden;
+                position:absolute;
+                background:#ffffff;
+                border:3px solid #666666;
+                width:50%;
+                height:50%;
+                left:25%; 
+            }
+            .popup-overlay.active{
+                /*displays pop-up when "active" class is present*/
+                visibility:visible;
+                text-align:center;
+            }
+
+            .popup-content {
+                /*Hides pop-up content when there is no "active" class */
+                visibility:hidden;
+            }
+
+            .popup-content.active {
+                /*Shows pop-up content when "active" class is present */
+                visibility:visible;
+            }
+
+            .close {
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                background-color: #6499ff; 
+                border: none;
+                color:#fff;
+                padding: 16px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                }
+
+                .close{
+                background-color: #6499ff; 
+                color: white; 
+                border: 2px solid #6499ff;
+                }
+
+                .close:hover {
+                background-color: #fff;
+                color: #6499ff;
+            }
+            .button2{
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                background-color: #6499ff; 
+                border: none;
+                color:#fff;
+                padding: 16px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                background-color: #6499ff; 
+                color: white; 
+                border: 2px solid #6499ff;
+            }
+            .button2:hover{
+                background-color: #fff;
+                color: #6499ff;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+    
+        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
+        <script src="config.js"></script>
+        <script src="account.js"></script>
+    </head>
+    <body>
+        <table id="table">
+            <tr>
+                <th>Booking ID</th>
+                <th>Train Name</th>
+                <th>Train Number</th>
+            </tr>
+            
+        </table>
+        <div class="popup-overlay">
+                <!--Creates the popup content-->
+                <div class="popup-content">
+                    <h2 style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif;">Booking Details</h2>
+                    <table id="table">
+                            <tr id="table_heading">
+                                <th>Passenger Name</th>
+                                <th>Passenger Age</th>
+                                <th>Cancel?</th>
+                            </tr>
+                            <tr>
+                                <td id="passengerid">ABC</td>
+                                <td id="passengerage">21</td>
+                                <td><button class="button2">Cancel</button></td>
+                            </tr>
+                    </table>
+                   <!--popup's close button-->
+                    <button class="close">Close</button>    
+                </div>
+        </div>
+        <script>
+            //appends an "active" class to .popup and .popup-content when the "Open" button is clicked
+            $(".open").on("click", function(){
+            $(".popup-overlay, .popup-content").addClass("active");
+            });
+
+            //removes the "active" class to .popup and .popup-content when the "Close" button is clicked 
+            $(".close, .popup-overlay").on("click", function(){
+            $(".popup-overlay, .popup-content").removeClass("active");
+            });
+        </script>
+    </body>
+</html>

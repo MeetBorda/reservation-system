@@ -1,0 +1,128 @@
+{
+  "cities" : {
+    "delhi" : {
+      "trains" : [ "del01", "del02", "del03" ]
+    },
+    "indore" : {
+      "trains" : [ "ind01", "ind02", "ind03" ]
+    },
+    "kolkata" : {
+      "trains" : [ "kol01", "kol02", "kol03" ]
+    },
+    "mumbai" : {
+      "trains" : [ "mum01", "mum02", "mum03" ]
+    }
+  },
+  "tickets" : {
+    "-LdhavbIQluWfJ3SGD1Q" : {
+      "passengers" : [ {
+        "age" : 20,
+        "name" : "meet"
+      } ],
+      "trainId" : "ind02",
+      "userId" : "-LdhaUfd72YOf1YAPF7j"
+    },
+    "-LdhcICPoEzD__50rboo" : {
+      "passengers" : [ {
+        "age" : 29,
+        "name" : "meet"
+      } ],
+      "trainId" : "ind02",
+      "userId" : "-LdhaUfd72YOf1YAPF7j"
+    },
+    "-LdhgKmctnSsdPi9wuWQ" : {
+      "passengers" : [ {
+        "age" : 20,
+        "name" : "Meet Borda"
+      }, {
+        "age" : 20,
+        "name" : "Rajat Vyas"
+      } ],
+      "trainId" : "del02",
+      "userId" : "-Ldhg7UQnswGt3IA7Bdh"
+    }
+  },
+  "trains" : {
+    "del01" : {
+      "availableSeats" : 180,
+      "destination" : "indore",
+      "name" : "delhi-indore-express",
+      "totalSeats" : 180
+    },
+    "del02" : {
+      "availableSeats" : -2,
+      "destination" : "mumbai",
+      "name" : "delhi-mumbai-express",
+      "totalSeats" : 180
+    },
+    "del03" : {
+      "availableSeats" : 180,
+      "destination" : "kolkata",
+      "name" : "delhi-kolkata-express",
+      "totalSeats" : 180
+    },
+    "ind01" : {
+      "availableSeats" : 180,
+      "destination" : "mumbai",
+      "name" : "indore-mumbai-express",
+      "totalSeats" : 180
+    },
+    "ind02" : {
+      "availableSeats" : 173,
+      "destination" : "delhi",
+      "name" : "indore-delhi-express",
+      "totalSeats" : 180
+    },
+    "ind03" : {
+      "availableSeats" : 180,
+      "destination" : "kolkata",
+      "name" : "indore-kolkata-express",
+      "totalSeats" : 180
+    },
+    "kol01" : {
+      "availableSeats" : 180,
+      "destination" : "indore",
+      "name" : "kolkata-indore-express",
+      "totalSeats" : 180
+    },
+    "kol02" : {
+      "availableSeats" : 180,
+      "destination" : "mumbai",
+      "name" : "kolkata-mumbai-express",
+      "totalSeats" : 180
+    },
+    "kol03" : {
+      "availableSeats" : 180,
+      "destination" : "delhi",
+      "name" : "kolkata-delhi-express",
+      "totalSeats" : 180
+    },
+    "mum01" : {
+      "availableSeats" : 180,
+      "destination" : "indore",
+      "name" : "mumbai-indore-express",
+      "totalSeats" : 180
+    },
+    "mum02" : {
+      "availableSeats" : 180,
+      "destination" : "kolkata",
+      "name" : "mumbai-kolkata-express",
+      "totalSeats" : 180
+    },
+    "mum03" : {
+      "availableSeats" : 180,
+      "destination" : "delhi",
+      "name" : "mumbai-delhi-express",
+      "totalSeats" : 180
+    }
+  },
+  "users" : {
+    "-Ldhg7UQnswGt3IA7Bdh" : {
+      "booked" : {
+        "ticketid" : "-LdhgKmctnSsdPi9wuWQ"
+      }
+    },
+    "email" : "borda.meet1@gmail.com",
+    "name" : "Meet Borda"
+  }
+}

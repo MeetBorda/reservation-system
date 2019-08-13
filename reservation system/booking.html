@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+	 #table{
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%
+            }
+            #table td, #table th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+            #table th { 
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #6499ff;
+                color: white;
+            }
+			</style>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Booking Form</title>
+	<link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<script src="https://code.jquery.com/jquery-3.4.0.min.js" 
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
+	<script src="config.js"></script>
+    <script src="app.js"></script>
+	<script src="searchTrains.js"></script>
+<script src="book.js"></script>
+</head>
+<body>
+	<div id="booking" class="section">
+		<div class="section-center">
+						<a class="submit-btn1" href="account.html" >Account</a><br><br><br>
+						<button class="submit-btn2" onclick="signOut()">SignOut</button>
+			<div class="container">
+				<div class="row">
+					<div class="booking-form">
+						<div class="booking-bg"></div>
+						<form>
+							<div class="form-header">
+								<h2>Make your reservation</h2>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">From</span>
+										<select class="form-control pickup" required>
+											<option>Select</option>
+											<option value="indore">Indore</option>
+											<option value="delhi">Delhi</option>
+											<option value="mumbai">Mumbai</option>
+											<option value="kolkata">Kolkata</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">To</span>
+										<select class="form-control destination" required>
+											<option>Select</option>
+											<option value="indore">Indore</option>
+											<option value="delhi">Delhi</option>
+											<option value="mumbai">Mumbai</option>
+											<option value="kolkata">Kolkata</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							
+							<!-- <div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Date</span>
+										<input class="form-control" type="date" required>
+										<span class="select-arrow"></span>
+									</div>
+								</div>
+							</div> -->
+							<div class="form-btn">
+							</div>
+                        </form>
+                        <button class="submit-btn" id="book_button">Search</a>
+
+					</div>
+				</div>
+			</div>
+			<div class="display_trains">
+				<table id="table">
+					<tr>
+						<th>Train Id</th>
+						<th>Train Name</th>
+						<th>Available Seats</th>
+						<th>Total Seats</th>
+						<th>Book</th>
+					</tr>
+		
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	function signOut(){
+		firebase.auth().signOut().then(function() {
+			window.location.href = './index.html'
+
+			console.log('Signed Out');
+		})}
+</script>
+</html>
